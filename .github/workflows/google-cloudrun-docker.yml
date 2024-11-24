@@ -1,14 +1,20 @@
 name: 'Build and Deploy to Cloud Run'
 
 on:
-  [push, pull_request, workflow_dispatch]:
+  push:
     branches:
       - '"main"'
+  pull_request:
+    branches:
+      - '"main"'
+  workflow_dispatch:
+    branches:
+        - '"main"'
 
 env:
-  PROJECT_ID: 'github-lab' # TODO: update to your Google Cloud project ID
-  REGION: 'europe-west3' # TODO: update to your region
-  SERVICE: 'ai-weather-gen' # TODO: update to your service name
+  PROJECT_ID: 'github-lab'
+  REGION: 'europe-west3'
+  SERVICE: 'ai-weather-gen'
 
 jobs:
   deploy:
@@ -28,7 +34,7 @@ jobs:
       # including authenticating via a JSON credentials file.
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@f112390a2df9932162083945e46d439060d66ec2' # google-github-actions/auth@v2
+        uses: google-github-actions/auth@v0.4.0'
         with:
           credentials_json: '${{ secrets.SA_CREDS }}'
 
