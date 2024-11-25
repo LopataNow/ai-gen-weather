@@ -22,7 +22,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./backend-nest
+        working-directory: ../../backend-nest
 
     permissions:
       contents: 'read'
