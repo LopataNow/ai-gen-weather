@@ -1,7 +1,7 @@
 import { Controller, Get, Param, UsePipes, ValidationPipe } from '@nestjs/common';
 import { GerminiService } from '../services/germini.service';
-import { GenWeatherDto } from '../DTOs/gen-werather.dto';
-import { WeatherPresenter } from 'src/Presenters/weather.presenter';
+import { GenWeatherDto } from '../dtos/gen-werather.dto';
+import { WeatherPresenter } from 'src/presenters/weather.presenter';
 
 @Controller()
 export class GenWeatherDtoController {
