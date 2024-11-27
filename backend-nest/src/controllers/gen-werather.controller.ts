@@ -1,6 +1,7 @@
 import { Controller, Get, Param, UsePipes, ValidationPipe } from '@nestjs/common';
 import { GerminiService } from '../services/germini.service';
 import { GenWeatherDto } from '../DTOs/gen-werather.dto';
+import { WeatherPresenter } from 'src/Presenters/weather.presenter';
 
 @Controller()
 export class GenWeatherDtoController {
@@ -8,7 +9,7 @@ export class GenWeatherDtoController {
 
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
-  async getHello(@Param() params: GenWeatherDto): Promise<any> {
+  async getHello(@Param() params: GenWeatherDto): Promise<WeatherPresenter> {
     const { language, style, date, latitude, longitude } = params;
     const generated = await this.germiniSerbice.getWeatherArticle(language, style, date, latitude, longitude);
     return generated;
