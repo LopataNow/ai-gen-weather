@@ -1,7 +1,6 @@
 import { GenerateContentResult, GoogleGenerativeAI } from '@google/generative-ai';
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { env } from 'process';
 
 const prompt = (style: string, language: string, weatherData: string, latitude: number, longitude: number) => 
   `Write an article about the weather in the ${style} style. In language ${language}. It must contain a headline, subtitle, and body in JSON format. Body are in one text format. Use the following data: ${JSON.stringify(weatherData)}. The location is latitude: ${latitude}, longitude: ${longitude}.`;
@@ -29,7 +28,7 @@ export class GerminiService {
   }
 
   private async getWeatherData(date: string, latitude: number, longitude: number){
-    const result = await axios.get(env.WEATHER_API_URL, {
+    const result = await axios.get(process.env.WEATHER_API_URL, {
       params: {
         latitude: latitude,
         longitude: longitude,
