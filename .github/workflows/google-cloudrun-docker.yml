@@ -58,13 +58,13 @@ jobs:
 
       - name: Deploy to Google Cloud Run
         uses: 'google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17'
-        run: |
-          gcloud run deploy nest-app \
-            --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-            --platform managed \
-            --region ${{ env.REGION }} \
-            --allow-unauthenticated \
-            --set-env-vars MONGODB=${{ secrets.MONGO }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }}
+          run: |
+            gcloud run deploy nest-app \
+              --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+              --platform managed \
+              --region ${{ env.REGION }} \
+              --allow-unauthenticated \
+              --set-env-vars MONGODB=${{ secrets.MONGO }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }}
 
         # END - Docker auth and build
 
