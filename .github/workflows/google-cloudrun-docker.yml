@@ -3,13 +3,13 @@ name: 'Build and Deploy to Cloud Run'
 on:
   push:
     branches:
-      - '"main"'
+      - 'main'
   pull_request:
     branches:
-      - '"main"'
+      - 'main'
   workflow_dispatch:
     branches:
-        - '"main"'
+        - 'main'
 
 env:
   PROJECT_ID: 'github-lab-442719'
@@ -60,7 +60,7 @@ jobs:
         uses: 'google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17'
         run: |
           gcloud run deploy nest-app \
-            --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }}" \
+            --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
             --platform managed \
             --region ${{ env.REGION }} \
             --allow-unauthenticated \
