@@ -53,10 +53,17 @@ jobs:
       - name: 'Build and Push Container'
         run: |-
           DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
-          docker build --tag "${DOCKER_TAG}" . \
-          --set-env-vars MONGODB=${{ secrets.MONGO }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }}
+          docker build --tag "${DOCKER_TAG}" .
           docker push "${DOCKER_TAG}"
-      - name: 'Deploy to Cloud Run'
+
+      - name: Deploy to Google Cloud Run
+        run: |
+          gcloud run deploy nest-app \
+            --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }}" \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --allow-unauthenticated \
+            --set-env-vars MONGODB=${{ secrets.MONGO }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }}
 
         # END - Docker auth and build
 
@@ -64,6 +71,8 @@ jobs:
         with:
           service: '${{ env.SERVICE }}'
           region: '${{ env.REGION }}'
+
+          
           # NOTE: If using a pre-built image, update the image name below:
 
           image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }}'
