@@ -3,13 +3,13 @@ name: 'Build and Deploy to Cloud Run'
 on:
   push:
     branches:
-      - 'main'
+      - main
   pull_request:
     branches:
-      - 'main'
+      - main
   workflow_dispatch:
     branches:
-        - 'main'
+        - main
 
 env:
   PROJECT_ID: 'github-lab-442719'
