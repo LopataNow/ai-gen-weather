@@ -16,7 +16,7 @@ import { WeatherService } from './services/wether.service';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => {
         console.log('mongo');
-        console.log(process.env.MONGODB);
+        console.log(process.env.GERMINI_API_KEY);
         return {uri: configService.get<string>('MONGODB')};
       },
       inject: [ConfigService],
