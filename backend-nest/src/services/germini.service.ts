@@ -11,8 +11,8 @@ export class GerminiService {
     language: string,
     style: string,
     date: string,
-    latitude: number = 48.148,
-    longitude: number = 17.1077
+    latitude: number,
+    longitude: number
   ): Promise<any> {
     const weatherData = await this.getWeatherData(date, latitude, longitude);
 

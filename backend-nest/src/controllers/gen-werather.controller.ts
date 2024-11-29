@@ -18,7 +18,7 @@ export class GenWeatherDtoController {
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
   async getHello(@Param() params: GenWeatherDto): Promise<WeatherPresenter> {
-    const { language, style, date, latitude, longitude } = params;
+    const { language = 'en', style = 'default', date = new Date(), latitude = 48.148, longitude =  17.1077 } = params;
 
     const weather = await this.weatherService.getWeather(
       createWeatherKey({ latitude, longitude, date, language })
