@@ -57,6 +57,7 @@ jobs:
           docker push "${DOCKER_TAG}"
 
       - name: Deploy to Google Cloud Run
+        uses: 'google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17'
         run: |
           gcloud run deploy nest-app \
             --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }}" \
@@ -66,11 +67,6 @@ jobs:
             --set-env-vars MONGODB=${{ secrets.MONGO }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.GERMINI_API_KEY }}
 
         # END - Docker auth and build
-
-        uses: 'google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17' # google-github-actions/deploy-cloudrun@v2
-        with:
-          service: '${{ env.SERVICE }}'
-          region: '${{ env.REGION }}'
 
           
           # NOTE: If using a pre-built image, update the image name below:
