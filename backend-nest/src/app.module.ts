@@ -15,7 +15,8 @@ import { WeatherService } from './services/wether.service';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => {
-        console.log('mongo', process.env.MONGODB);
+        console.log('mongo');
+        console.log(process.env.MONGODB);
         return {uri: configService.get<string>('MONGODB')};
       },
       inject: [ConfigService],
