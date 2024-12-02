@@ -5,7 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Weather, WeatherSchema } from './schemas/weather.schema';
-import { WeatherService } from './services/wether.service';
+import { WeatherService } from './services/weather.service';
 
 @Module({
   imports: [
