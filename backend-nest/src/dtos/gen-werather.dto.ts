@@ -9,7 +9,6 @@ export class GenWeatherDto {
 
     @IsString()
     @IsOptional()
-
     @IsIn(['fantastic', 'tabloids'])
     style: string;
 
