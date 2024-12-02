@@ -1,9 +1,9 @@
-import { GenerateContentResult, GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 
-const prompt = (style: string, language: string, weatherData: string, latitude: number, longitude: number) => 
-  `Write an article about the weather in the ${style} style. In language ${language}. It must contain a headline, subtitle, and body in JSON format. Body are in one text format. Use the following data: ${JSON.stringify(weatherData)}. The location is latitude: ${latitude}, longitude: ${longitude}.`;
+const prompt = (style: string, language: string, weatherData: string, city: string) => 
+  `Write an article about the weather in the ${style} style. In language ${language}. It must contain a headline, subtitle, and body in JSON format. Body are in one text format. Use the following data: ${JSON.stringify(weatherData)}. The location in city ${city}.`;
 
 @Injectable()
 export class GerminiService {
@@ -19,12 +19,12 @@ export class GerminiService {
     const genAI = new GoogleGenerativeAI(process.env.GERMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const content = await model.generateContent(prompt(style, language, JSON.stringify(weatherData), latitude, longitude));
+    const content = await model.generateContent(prompt(style, language, JSON.stringify(weatherData), this.getCityByCoordinates(latitude, longitude)));
 
-    let retulst = content.response.candidates[0].content.parts[0].text;
-    retulst = retulst.replace("```json", '').replace("```", '');
+    let result = content.response.candidates[0].content.parts[0].text;
+    result = result.replace("```json", '').replace("```", '');
 
-    return JSON.parse(retulst);
+    return JSON.parse(result);
   }
 
   private async getWeatherData(date: string, latitude: number, longitude: number){
@@ -37,6 +37,11 @@ export class GerminiService {
       },
     });
     return result.data;
+  }
+
+  private getCityByCoordinates(latitude: number, longitude: number): string {
+    // TOTO: Implement reverse geocoding
+    return 'Bratislava';
   }
 }
 

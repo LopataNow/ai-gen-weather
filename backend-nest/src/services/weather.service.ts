@@ -6,14 +6,13 @@ import { Weather } from 'src/schemas/weather.schema';
 @Injectable()
 export class WeatherService {
   constructor(@InjectModel(Weather.name) private weatherModel: Model<Weather>) {}
-  
-  async getWeather(id: string){
-    return this.weatherModel.findById(id);
+
+  async getWeather(id: string): Promise<Weather | null> {
+    return this.weatherModel.findById(id).exec();
   }
 
-  async createWeather(weather: Weather){
+  async createWeather(weather: Weather): Promise<Weather> {
     const createdWeather = new this.weatherModel(weather);
     return createdWeather.save();
   }
 }
-
