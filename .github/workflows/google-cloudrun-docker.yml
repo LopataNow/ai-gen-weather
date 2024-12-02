@@ -63,7 +63,7 @@ jobs:
             --platform managed \
             --region ${{ env.REGION }} \
             --allow-unauthenticated \
-            --set-env-vars "MONGODB=${{ secrets.MONGODB }}","GERMINI_API_KEY=${{ secrets.GERMINI_API_KEY }}","WEATHER_API_URL=${{ secrets.WEATHER_API_URL }}"
+            --set-env-vars MONGODB=${{ secrets.MONGODB }},GERMINI_API_KEY=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.WEATHER_API_URL }}
 
         # END - Docker auth and build
 
