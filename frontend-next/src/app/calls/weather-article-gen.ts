@@ -7,8 +7,7 @@ export interface WeatherArticel{
 }
 
 export function getArticle(style: string){
-    console.log(process.env.SERVE_URL);
-    return axios.get<WeatherArticel>(process.env.SERVE_URL as string, {
+    return axios.get<WeatherArticel>(process.env.SERVER_URL as string, {
         params: {
             style,
             data: new Date()
