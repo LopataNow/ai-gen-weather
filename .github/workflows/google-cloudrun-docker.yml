@@ -62,11 +62,9 @@ jobs:
             --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
             --platform managed \
             --region ${{ env.REGION }} \
-            --allow-unauthenticated \
-            --set-env-vars MONGODB=${{ secrets.MONGODB }},GERMINI_API_KEY=${{ secrets.GERMINI_API_KEY }},WEATHER_API_URL=${{ secrets.WEATHER_API_URL }}
+            --allow-unauthenticated
         # END - Docker auth and build
 
       - name: 'Show output'
         run: |2-
-
           echo ${{ steps.deploy.outputs.url }}
