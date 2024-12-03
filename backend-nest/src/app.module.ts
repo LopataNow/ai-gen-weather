@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { GenWeatherDtoController } from './controllers/gen-werather.controller';
+import { GenWeatherDtoController } from './controllers/gen-weather.controller';
 import { GerminiService } from './services/germini.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';

@@ -34,9 +34,11 @@ export class GenWeatherDtoController {
       throw new Error('Unknown error occurred while generating weather article.');
     }
 
-    await this.weatherService.createWeather({
+    const response = await this.weatherService.createWeather({
       _id: createWeatherKey({ latitude, longitude, style, date, language }),
       ...generated
     });
+
+    return response;
   }
 }
