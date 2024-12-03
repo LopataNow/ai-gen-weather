@@ -6,11 +6,11 @@ export interface WeatherArticel{
     body: string;
 }
 
-export function getArticle(style: string){
+export function getArticle(style: string, data: Date){
     return axios.get<WeatherArticel>(process.env.SERVER_URL as string, {
         params: {
             style,
-            data: new Date()
+            data
         }
     });
 }

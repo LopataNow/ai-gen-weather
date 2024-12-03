@@ -4,8 +4,8 @@ import { unstable_cache } from "next/cache";
 import Link from "next/link";
 
 const getArticleCache = unstable_cache(
-  async (style: string) => {
-    return await getArticle(style).then(res=>res.data);
+  async (style: string, date: Date) => {
+    return await getArticle(style, date).then(res=>res.data);
   },
   ['posts'],
   { revalidate: 3600 * 48, tags: ['posts'] }
@@ -18,7 +18,7 @@ export default async function Home(props: {
 }) {
   const searchParams = await props.searchParams;
   const style = searchParams?.style || 'fantastic';
-  const article = await getArticleCache(style);
+  const article = await getArticleCache(style, new Date());
 
   return (
     <div className="container mx-auto p-4">
