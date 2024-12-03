@@ -17,6 +17,7 @@ Navigate to the local directory and run docker compose:
 To run the backend, follow these steps:
 
 Navigate to the backend directory, copy the environment, install dependencies: and run app:
+
     ```sh
     cd backend-nest
     #copy for windows
@@ -34,6 +35,7 @@ This will start the frontend application on `http://localhost:3000`.
 To run the frontend, follow these steps:
 
 Navigate to the frontend directory and install dependencies:
+
     ```sh
     cd frontend-next
     #copy for windows
@@ -45,6 +47,7 @@ Navigate to the frontend directory and install dependencies:
     ```
 
 This will start the frontend application on `http://localhost:3001`.
+
 ## Features
 
 - **Automated Article Generation**: Uses AI to generate weather articles based on the latest weather data.
