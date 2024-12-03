@@ -18,7 +18,11 @@ To run the backend, follow these steps:
 1. Navigate to the backend directory, copy the environment, install dependencies: and run app:
     ```sh
     cd backend-nest
+    #copy for windows
+    copy .env.local .env
+    #copy for linux
     cp .env.local .env
+    #add germini key to .env
     npm install
     npm run dev
     ```
@@ -31,6 +35,9 @@ To run the frontend, follow these steps:
 1. Navigate to the frontend directory and install dependencies:
     ```sh
     cd frontend-next
+    #copy for windows
+    copy .env.local .env
+    #copy for linux
     cp .env.local .env
     npm install
     npm start
