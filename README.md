@@ -6,19 +6,17 @@
 To run the database, follow these steps:
 
 Navigate to the local directory and run docker compose:
-
-    ```sh
+```sh
     cd llm-gen-local
     docker compose up -d
-    ```
+```
 
 ## run backend
 
 To run the backend, follow these steps:
 
 Navigate to the backend directory, copy the environment, install dependencies: and run app:
-
-    ```sh
+```sh
     cd backend-nest
     #copy for windows
     copy .env.local .env
@@ -27,7 +25,7 @@ Navigate to the backend directory, copy the environment, install dependencies: a
     #add germini key to .env
     npm install
     npm run start:dev
-    ```
+```
 This will start the frontend application on `http://localhost:3000`.
 
 ## Run Frontend
@@ -35,8 +33,7 @@ This will start the frontend application on `http://localhost:3000`.
 To run the frontend, follow these steps:
 
 Navigate to the frontend directory and install dependencies:
-
-    ```sh
+```sh
     cd frontend-next
     #copy for windows
     copy .env.local .env
@@ -44,7 +41,7 @@ Navigate to the frontend directory and install dependencies:
     cp .env.local .env
     npm install
     npm start
-    ```
+```
 
 This will start the frontend application on `http://localhost:3001`.
 
