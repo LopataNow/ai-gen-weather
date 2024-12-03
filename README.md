@@ -24,7 +24,7 @@ To run the backend, follow these steps:
     cp .env.local .env
     #add germini key to .env
     npm install
-    npm run dev
+    npm run start:dev
     ```
 This will start the frontend application on `http://localhost:3000`.
 
