@@ -30,6 +30,10 @@ export class GenWeatherDtoController {
 
     const generated = await this.germiniService.getWeatherArticle(language, style, date, latitude, longitude);
 
+    if (!generated || !generated?.headline || !generated?.subtitle || !generated?.body) {
+      throw new Error('Unknown error occurred while generating weather article.');
+    }
+
     await this.weatherService.createWeather({
       _id: createWeatherKey({ latitude, longitude, style, date, language }),
       ...generated
