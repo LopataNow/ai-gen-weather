@@ -6,6 +6,7 @@
 To run the database, follow these steps:
 
 Navigate to the local directory and run docker compose:
+
     ```sh
     cd llm-gen-local
     docker compose up -d
@@ -15,7 +16,7 @@ Navigate to the local directory and run docker compose:
 
 To run the backend, follow these steps:
 
-1. Navigate to the backend directory, copy the environment, install dependencies: and run app:
+Navigate to the backend directory, copy the environment, install dependencies: and run app:
     ```sh
     cd backend-nest
     #copy for windows
@@ -32,7 +33,7 @@ This will start the frontend application on `http://localhost:3000`.
 
 To run the frontend, follow these steps:
 
-1. Navigate to the frontend directory and install dependencies:
+Navigate to the frontend directory and install dependencies:
     ```sh
     cd frontend-next
     #copy for windows
