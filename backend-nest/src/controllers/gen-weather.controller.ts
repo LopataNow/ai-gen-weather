@@ -30,7 +30,11 @@ export class GenWeatherDtoController {
 
     const generated = await this.germiniService.getWeatherArticle(language, style, date, latitude, longitude);
 
-    if (!generated || !generated?.headline || !generated?.subtitle || !generated?.body) {
+    if (!generated || 
+      typeof generated?.headline !== 'string' || 
+      typeof generated?.subtitle !== 'string' || 
+      typeof generated?.body !== 'string'
+    ) {
       throw new Error('Unknown error occurred while generating weather article.');
     }
 
